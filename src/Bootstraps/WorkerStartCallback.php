@@ -6,6 +6,8 @@ namespace PeibinLaravel\SwooleEvent\Bootstraps;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use PeibinLaravel\Contracts\StdoutLoggerInterface;
+use PeibinLaravel\Coordinator\Constants;
+use PeibinLaravel\Coordinator\CoordinatorManager;
 use PeibinLaravel\SwooleEvent\Events\AfterWorkerStart;
 use PeibinLaravel\SwooleEvent\Events\BeforeWorkerStart;
 use PeibinLaravel\SwooleEvent\Events\MainWorkerStart;
@@ -35,5 +37,6 @@ class WorkerStartCallback
         }
 
         $this->dispatcher->dispatch(new AfterWorkerStart($server, $workerId));
+        CoordinatorManager::until(Constants::WORKER_START)->resume();
     }
 }
