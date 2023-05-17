@@ -15,7 +15,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "peibin/laravel-coordinator": "^1.0"
+    "peibin/laravel-coordinator": "*"
   },
   "autoload": {
     "psr-4": {
